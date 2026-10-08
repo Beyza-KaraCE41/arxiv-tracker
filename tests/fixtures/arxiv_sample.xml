@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <entry>
+    <id>http://arxiv.org/abs/2610.08536v1</id>
+    <title>Programming electronic states in
+      conductive   metal-organic frameworks</title>
+    <summary>Conductive metal-organic frameworks are promising electronic materials.</summary>
+    <published>2026-10-06T15:26:30Z</published>
+    <link href="https://arxiv.org/abs/2610.08536v1" rel="alternate" type="text/html"/>
+    <author><name>Hao Chen</name></author>
+    <author><name>Tongyang Zhao</name></author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2610.07918v1</id>
+    <title>Layered spin-crossover metal-organic frameworks</title>
+    <summary>Metal-organic frameworks for two-dimensional quantum materials.</summary>
+    <published>2026-10-06T07:59:51Z</published>
+    <link href="https://arxiv.org/abs/2610.07918v1" rel="alternate" type="text/html"/>
+    <author><name>José Antonio Real</name></author>
+    <author><name>Samuel Mañas-Valero</name></author>
+  </entry>
+</feed>
