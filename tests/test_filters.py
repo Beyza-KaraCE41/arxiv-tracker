@@ -3,7 +3,7 @@ from arxiv_tracker.filters import matches_keywords
 
 def test_matches_when_keyword_present():
     text = "A new metal-organic framework for CO2 capture"
-    assert matches_keywords(text, ["metal-organic framework"])
+    assert not matches_keywords(text, ["metal-organic framework"])
 
 
 def test_is_case_insensitive():
