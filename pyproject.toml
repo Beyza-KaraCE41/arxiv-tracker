@@ -11,7 +11,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
 authors = [{ name = "Beyza Nur Kara" }]
-dependencies = []
+dependencies = ["feedparser", "requests"]
 
 [project.optional-dependencies]
 dev = ["pytest", "ruff"]
