@@ -6,6 +6,8 @@ from urllib.parse import urlencode
 import feedparser
 import requests
 
+from arxiv_tracker.text import tokenize
+
 ARXIV_API_URL = "https://export.arxiv.org/api/query"
 
 
@@ -27,10 +29,19 @@ def _clean(text: str) -> str:
 
 
 def build_query_url(keywords: list[str], max_results: int = 50) -> str:
-    """Build an arXiv API URL that searches for any of the keywords."""
-    search_query = " OR ".join(f'all:"{keyword}"' for keyword in keywords)
+    """Build an arXiv API URL that searches for any of the keywords.
+
+    Each keyword becomes a group of words that must all appear,
+    e.g. "MOF linker" -> (all:mof AND all:linker).
+    """
+    groups = []
+    for keyword in keywords:
+        terms = tokenize(keyword)
+        if terms:
+            group = " AND ".join(f"all:{term}" for term in terms)
+            groups.append(f"({group})")
     params = {
-        "search_query": search_query,
+        "search_query": " OR ".join(groups),
         "start": 0,
         "max_results": max_results,
         "sortBy": "submittedDate",

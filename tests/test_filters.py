@@ -18,7 +18,7 @@ def make_paper(
     )
 
 
-# --- matches_keywords ---------------------------------------------
+# --- matches_keywords ------------------------------------------------------
 
 
 def test_matches_when_keyword_present():
@@ -40,7 +40,27 @@ def test_returns_false_for_empty_keyword_list():
     assert not matches_keywords("Any text", [])
 
 
-# ---- filter_papers--------------------------------------------
+def test_matches_when_hyphen_is_written_as_space():
+    text = "A new metal organic framework for CO2 capture"
+    assert matches_keywords(text, ["metal-organic framework"])
+
+
+def test_matches_when_words_are_not_adjacent():
+    text = "Organic linkers used in MOFs"
+    assert matches_keywords(text, ["MOF linker"])
+
+
+def test_matches_across_line_breaks():
+    text = "Conductive metal-organic\nframeworks"
+    assert matches_keywords(text, ["metal-organic framework"])
+
+
+def test_requires_every_word_of_the_keyword():
+    text = "Advances in organic chemistry"
+    assert not matches_keywords(text, ["metal-organic framework"])
+
+
+# --- filter_papers ---------------------------------------------------------
 
 
 def test_filter_papers_checks_title_and_summary():
