@@ -1,8 +1,10 @@
-
 [search]
 keywords = [
     "metal-organic framework",
     "MOF linker",
-    "reticular chemistry",   
+    "reticular chemistry",
 ]
 max_results = 50
+
+[site]
+url = "https://beyza-karace41.github.io/arxiv-tracker/"
