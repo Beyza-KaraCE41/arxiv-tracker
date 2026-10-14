@@ -40,6 +40,18 @@ def test_render_paper_escapes_html_in_title():
     assert "<b>" not in html
 
 
+def test_render_paper_marks_new_papers():
+    html = render_paper(make_paper(), is_new=True)
+
+    assert '<span class="badge">New</span>' in html
+    assert '<article class="card new">' in html
+
+
+def test_render_paper_has_no_badge_by_default():
+    html = render_paper(make_paper())
+    assert "badge" not in html
+
+
 # --- format_authors --------------------------------------------------------
 
 
@@ -66,6 +78,18 @@ def test_render_page_shows_count_keywords_and_date():
     assert '<span class="chip">mof</span>' in page
     assert '<span class="chip">linker</span>' in page
     assert "2026-10-13 09:00 UTC" in page
+
+
+def test_render_page_shows_new_count_and_badges():
+    page = render_page([make_paper()], ["mof"], UPDATED, new_ids={"2610.00001v1"})
+
+    assert "<strong>1 new</strong>" in page
+    assert '<span class="badge">New</span>' in page
+
+
+def test_render_page_hides_new_count_when_nothing_is_new():
+    page = render_page([make_paper()], ["mof"], UPDATED)
+    assert " new</strong>" not in page
 
 
 def test_render_page_with_no_papers_shows_message():
