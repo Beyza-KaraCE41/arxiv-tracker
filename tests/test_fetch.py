@@ -20,7 +20,9 @@ def test_build_query_url_joins_keywords_with_or():
     url = build_query_url(["metal-organic framework", "linker"], max_results=10)
     params = parse_qs(urlparse(url).query)
 
-    assert params["search_query"] == ['all:"metal-organic framework" OR all:"linker"']
+    assert params["search_query"] == [
+        "(all:metal AND all:organic AND all:framework) OR (all:linker)"
+    ]
     assert params["max_results"] == ["10"]
     assert params["sortBy"] == ["submittedDate"]
 
