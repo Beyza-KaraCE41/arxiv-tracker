@@ -60,6 +60,19 @@ def test_requires_every_word_of_the_keyword():
     assert not matches_keywords(text, ["metal-organic framework"])
 
 
+def test_ignores_keyword_words_spread_across_the_text():
+    text = (
+        "Polarons in transition-metal oxides and organic semiconductors. "
+        "We propose a framework for trapped-ion quantum simulators."
+    )
+    assert not matches_keywords(text, ["metal-organic framework"])
+
+
+def test_matches_words_that_are_close_together():
+    text = "Porous metal-organic and covalent organic frameworks"
+    assert matches_keywords(text, ["metal-organic framework"])
+
+
 # --- filter_papers ---------------------------------------------------------
 
 
